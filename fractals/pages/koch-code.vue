@@ -3,22 +3,10 @@
     <header class="l__main-header l__main-header--red">
       <h1>Fractals Using Javascript, VueJS and WebGL</h1>
     </header>
-    <section class="l__cards">
+    <section class="l__full-view">
       <article class="l__card l__card--primary">
         <header class="l__card-header">Koch Code</header>
         <koch/>
-        <footer>
-          <nuxt-link to="/koch-code">View</nuxt-link>
-        </footer>
-      </article>
-      <article class="l__card l__card--primary">
-        <header class="l__card-header">Koch Code</header>
-      </article>
-      <article class="l__card l__card--primary">
-        <header class="l__card-header">KochSnowflake</header>
-      </article>
-      <article class="l__card l__card--primary">
-        <header class="l__card-header">KochSnowinverse</header>
       </article>
     </section>
   </section>
@@ -34,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .l__main-header {
   padding: 20px;
 }
@@ -42,13 +30,14 @@ export default {
   background-color: #bc0000;
   color: #ffffff;
 }
-.l__cards {
+.l__full-view {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(12, minmax(30px, 1fr));
+  grid-template-rows: 1fr;
 }
 .l__card {
-  grid-column: span 3;
+  grid-column: span 12;
 }
 .l__card--primary {
   background-color: #efefef;
