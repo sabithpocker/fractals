@@ -2,6 +2,8 @@
 
 > Fractals using Javascript and WebGL
 
+A simple port of the repo WebGL Experiments to vue.js / nuxt implementation for easier maintenence and development.
+
 ## Build Setup
 
 ``` bash
