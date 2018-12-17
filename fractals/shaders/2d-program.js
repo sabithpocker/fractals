@@ -1,4 +1,4 @@
-import {gl} from '../gl'
+import { gl } from '../gl'
 // Shader Utils
 import { createProgram } from '../create-program'
 // Shaders
@@ -9,7 +9,10 @@ export const program = createProgram(gl, vertexShader, fragmentShader)
 
 const positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
 const resolutionUniformLocation = gl.getUniformLocation(program, 'u_resolution')
-const translationUniformLocation = gl.getUniformLocation(program, 'u_translation')
+const translationUniformLocation = gl.getUniformLocation(
+  program,
+  'u_translation'
+)
 const rotationUniformLocation = gl.getUniformLocation(program, 'u_rotation')
 const colorUniformLocation = gl.getUniformLocation(program, 'u_color')
 const positionBuffer = gl.createBuffer()
@@ -24,7 +27,7 @@ export const simpleShader = {
   positionBuffer: positionBuffer
 }
 
-export function initSimpleProgram () {
+export function initSimpleProgram() {
   gl.useProgram(program)
   // set the resolution
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)

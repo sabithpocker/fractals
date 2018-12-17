@@ -6,18 +6,18 @@
     <section class="l__full-view">
       <article class="l__card l__card--primary">
         <header class="l__card-header">Koch Code</header>
-        <koch/>
+        <koch-code/>
       </article>
     </section>
   </section>
 </template>
 
 <script>
-import Koch from '../components/koch'
+import KochCode from '../components/KochCode'
 
 export default {
   components: {
-    koch: Koch
+    'koch-code': KochCode
   }
 }
 </script>

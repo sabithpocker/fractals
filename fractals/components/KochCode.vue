@@ -6,10 +6,9 @@
 
 <script>
 import WebGLM from '../mixins/webgl.mixin'
-import Fractal from '../mixins/fractal.mixin'
 import Line from '../mixins/line.mixin'
 export default {
-  mixins: [WebGLM, Fractal, Line],
+  mixins: [WebGLM, Line],
   mounted: function() {
     const canvas = this.$refs.kochCanvas
     const { gl, simpleShader } = this.initialize(canvas)
