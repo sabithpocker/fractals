@@ -11,6 +11,10 @@ export default {
       }
       return gl
     },
+    data: () => ({
+      gl: null,
+      simpleShader: null
+    }),
     resize(gl) {
       var realToCSSPixels = window.devicePixelRatio
 

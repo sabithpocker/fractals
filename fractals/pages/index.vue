@@ -13,23 +13,41 @@
       </article>
       <article class="l__card l__card--primary">
         <header class="l__card-header">Koch Snow Flake</header>
-        <figure><koch-snow-flake/></figure>
+        <figure>
+          <koch-snow-flake 
+            :show-growth="kochSnowFlake.checked"/>
+        </figure>
         <footer class="l__card-footer">
           <nuxt-link to="/koch-snow-flake">View</nuxt-link>
+          <input
+            id="koch-snow-flake"
+            v-model="kochSnowFlake.checked"
+            type="checkbox">
+          <label for="koch-snow-flake">Show Growth</label>
         </footer>
       </article>
       <article class="l__card l__card--primary">
         <header class="l__card-header">Koch Snow Inverse</header>
-        <figure><koch-snow-inverse/></figure>
+        <figure>
+          <koch-snow-inverse 
+            :show-growth="kochSnowInverse.checked"/>
+        </figure>
         <footer class="l__card-footer">
           <nuxt-link to="/koch-snow-inverse">View</nuxt-link>
+          <input
+            id="koch-snow-inverse"
+            v-model="kochSnowInverse.checked"
+            type="checkbox">
+          <label for="koch-snow-inverse">Show Growth</label>
         </footer>
       </article>
       <article class="l__card l__card--primary">
-        <header class="l__card-header">Koch Snow Inverse (Growth)</header>
-        <figure><koch-snow-inverse show-growth/></figure>
+        <header class="l__card-header">Sierpinski</header>
+        <figure>
+          <sierpinski/>
+        </figure>
         <footer class="l__card-footer">
-          <nuxt-link to="/koch-snow-inverse">View</nuxt-link>
+          <nuxt-link to="/sierpinski">View</nuxt-link>
         </footer>
       </article>
     </section>
@@ -40,13 +58,26 @@
 import KochCode from '../components/KochCode'
 import KochSnowFlake from '../components/KochSnowFlake'
 import KochSnowInverse from '../components/KochSnowInverse'
+import Sierpinski from '../components/Sierpinski'
 
 export default {
   components: {
     'koch-code': KochCode,
     'koch-snow-flake': KochSnowFlake,
-    'koch-snow-inverse': KochSnowInverse
-  }
+    'koch-snow-inverse': KochSnowInverse,
+    sierpinski: Sierpinski
+  },
+  data: () => ({
+    kochCode: {
+      checked: false
+    },
+    kochSnowFlake: {
+      checked: false
+    },
+    kochSnowInverse: {
+      checked: false
+    }
+  })
 }
 </script>
 

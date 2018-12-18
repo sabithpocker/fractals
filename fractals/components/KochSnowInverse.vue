@@ -8,17 +8,14 @@
 import WebGLM from '../mixins/webgl.mixin'
 import Line from '../mixins/line.mixin'
 import EquilateralLines from '../mixins/equilateral-lines.mixin'
+import ShowGrowth from '../mixins/show-growth'
 export default {
-  mixins: [WebGLM, Line, EquilateralLines],
-  props: {
-    showGrowth: {
-      type: Boolean,
-      default: false
-    }
-  },
+  mixins: [WebGLM, Line, EquilateralLines, ShowGrowth],
   mounted: function() {
     const canvas = this.$refs.kochSnowFlake
     const { gl, simpleShader } = this.initialize(canvas)
+    this.$data.gl = gl
+    this.$data.simpleShader = simpleShader
     this.paint(gl, simpleShader)
   },
   methods: {
