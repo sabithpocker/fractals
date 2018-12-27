@@ -6,9 +6,24 @@
     <section class="l__cards">
       <article class="l__card l__card--primary">
         <header class="l__card-header">Koch Code</header>
-        <figure><koch-code/></figure>
+        <figure>
+          <koch-code
+            :levels="kochCode.levels"
+            :show-growth="kochCode.checked"/>
+        </figure>
         <footer class="l__card-footer">
           <nuxt-link to="/koch-code">View</nuxt-link>
+          <input
+            id="koch-code"
+            v-model="kochCode.checked"
+            type="checkbox">
+          <label for="koch-code">Show Growth</label>
+          <input
+            id="koch-code-levels"
+            v-model.number="kochCode.levels"
+            min="0"
+            max="5"
+            type="number">
         </footer>
       </article>
       <article class="l__card l__card--primary">
@@ -69,7 +84,8 @@ export default {
   },
   data: () => ({
     kochCode: {
-      checked: false
+      checked: false,
+      levels: 4
     },
     kochSnowFlake: {
       checked: false
