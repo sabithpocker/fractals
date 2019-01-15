@@ -8,6 +8,7 @@
         <header class="l__card-header">Koch Code</header>
         <figure>
           <koch-code
+            :paint-color="kochCode.color"
             :levels="kochCode.levels"
             :show-growth="kochCode.checked"/>
         </figure>
@@ -85,7 +86,8 @@ export default {
   data: () => ({
     kochCode: {
       checked: false,
-      levels: 4
+      levels: 4,
+      color: { r: 255, g: 0, b: 0, a: 1 }
     },
     kochSnowFlake: {
       checked: false

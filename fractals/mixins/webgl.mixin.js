@@ -1,4 +1,4 @@
-import { vertexShaderAltSource } from '../shaders/vertex-shader-alt-source'
+import { vertexShaderSource } from '../shaders/vertex-shader-source'
 import { fragmentShaderSource } from '../shaders/fragment-shader-source'
 export default {
   methods: {
@@ -64,7 +64,7 @@ export default {
       gl.deleteShader(shader)
     },
     getSimpleVertexShader(gl) {
-      return this.createShader(gl, gl.VERTEX_SHADER, vertexShaderAltSource)
+      return this.createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
     },
     getSimpleFragmentShader(gl) {
       return this.createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
@@ -85,6 +85,15 @@ export default {
       gl.enableVertexAttribArray(positionAttributeLocation)
       // Bind the position buffer.
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+    },
+    changeColor(r = 0, g = 0, b = 0, a = 1) {
+      this.$data.gl.uniform4f(
+        this.$data.simpleShader.colorUniformLocation,
+        r,
+        b,
+        g,
+        a
+      )
     },
     initialize(canvas) {
       const gl = this.getWebGLContext(canvas)

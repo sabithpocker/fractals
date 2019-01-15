@@ -29,6 +29,12 @@ export default {
       var count = 2
       gl.drawArrays(primitiveType, offset, count)
     },
+    getChildLinePointsForLevelsArray(points, levelsArray = []) {
+      return levelsArray.reduce(
+        (a, i) => [...a, ...this.getChildLinePoints(points, i)],
+        []
+      )
+    },
     getChildLinePoints(points, depth = 0) {
       if (depth === 0) {
         const Ax = points[0]

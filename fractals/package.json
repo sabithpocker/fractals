@@ -13,8 +13,10 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "animejs": "^3.0.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-color": "^2.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
