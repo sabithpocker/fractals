@@ -14,6 +14,15 @@
         </figure>
         <footer class="l__card-footer">
           <nuxt-link to="/koch-code">View</nuxt-link>
+          <span class="color-picker-wrapper">
+            <button @click="kochCode.displayColorPicker = !kochCode.displayColorPicker">Color</button>
+            <no-ssr>
+              <color-picker
+                v-if="kochCode.displayColorPicker" 
+                v-model="kochCode.color"
+                @blur="kochCode.displayColorPicker = false"/>
+            </no-ssr>
+          </span>
           <input
             id="koch-code"
             v-model="kochCode.checked"
@@ -76,6 +85,9 @@ import KochSnowFlake from '../components/KochSnowFlake'
 import KochSnowInverse from '../components/KochSnowInverse'
 import Sierpinski from '../components/Sierpinski'
 
+if (process.client) {
+  import('../plugins/color-picker')
+}
 export default {
   components: {
     'koch-code': KochCode,
@@ -87,7 +99,8 @@ export default {
     kochCode: {
       checked: false,
       levels: 4,
-      color: { r: 255, g: 0, b: 0, a: 1 }
+      color: { rgba: { r: 255, g: 0, b: 0, a: 1 } },
+      displayColorPicker: false
     },
     kochSnowFlake: {
       checked: false
@@ -135,5 +148,15 @@ export default {
   border-top: 1px solid #b0b584;
   color: #3c420c;
   font-size: 0.7em;
+}
+
+.color-picker-wrapper {
+  position: relative;
+}
+
+.color-picker-wrapper .vc-sketch {
+  position: absolute;
+  top: 10px;
+  left: 0px;
 }
 </style>

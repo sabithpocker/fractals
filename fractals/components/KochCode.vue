@@ -23,10 +23,10 @@ export default {
   methods: {
     paint: function(gl, simpleShader) {
       this.changeColor(
-        this.paintColor.r / 255,
-        this.paintColor.g / 255,
-        this.paintColor.b / 255,
-        this.paintColor.a
+        this.paintColor.rgba.r / 255,
+        this.paintColor.rgba.b / 255,
+        this.paintColor.rgba.g / 255,
+        this.paintColor.rgba.a
       )
       const width = gl.canvas.width
       const margin = 10
