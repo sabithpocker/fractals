@@ -4,57 +4,54 @@
       <h1>Fractals Using Javascript, VueJS and WebGL</h1>
     </header>
     <section class="l__cards">
-      <article class="l__card l__card--primary">
-        <header class="l__card-header">Koch Code</header>
-        <figure>
+      <fractal-card>
+        <span slot="title">Koch Code</span>
+        <template
+          slot="fractal"
+          slot-scope="props">
           <koch-code
-            :paint-color="kochCode.color"
-            :levels="kochCode.levels"
-            :show-growth="kochCode.checked"/>
+            :paint-color="props.settings.color"
+            :levels="props.settings.levels"
+            :show-growth="props.settings.checked"/>
+        </template>
+      </fractal-card>
+      <article class="l__card l__card--primary">
+        <header class="l__card-header">Koch Snow Flake</header>
+        <figure>
+          <koch-snow-flake
+            :paint-color="kochSnowFlake.color"
+            :background-color="kochSnowFlake.backgroundColor"
+            :levels="kochSnowFlake.levels"
+            :show-growth="kochSnowFlake.checked"/>
         </figure>
         <footer class="l__card-footer">
-          <nuxt-link to="/koch-code">View</nuxt-link>
+          <nuxt-link to="/koch-snow-flake">View</nuxt-link>
           <span class="color-picker-wrapper">
-            <button @click="kochCode.displayColorPicker = !kochCode.displayColorPicker">Color</button>
+            <button @click="kochSnowFlake.displayColorPicker = !kochSnowFlake.displayColorPicker">Color</button>
             <no-ssr>
               <color-picker
-                v-if="kochCode.displayColorPicker" 
-                v-model="kochCode.color"
-                @blur="kochCode.displayColorPicker = false"/>
+                v-if="kochSnowFlake.displayColorPicker"
+                v-model="kochSnowFlake.color"
+                @blur="kochSnowFlake.displayColorPicker = false"/>
             </no-ssr>
           </span>
           <input
-            id="koch-code"
-            v-model="kochCode.checked"
+            id="koch-snow-flake"
+            v-model="kochSnowFlake.checked"
             type="checkbox">
-          <label for="koch-code">Show Growth</label>
+          <label for="koch-snow-flake">Show Growth</label>
           <input
             id="koch-code-levels"
-            v-model.number="kochCode.levels"
+            v-model.number="kochSnowFlake.levels"
             min="0"
             max="5"
             type="number">
         </footer>
       </article>
       <article class="l__card l__card--primary">
-        <header class="l__card-header">Koch Snow Flake</header>
-        <figure>
-          <koch-snow-flake 
-            :show-growth="kochSnowFlake.checked"/>
-        </figure>
-        <footer class="l__card-footer">
-          <nuxt-link to="/koch-snow-flake">View</nuxt-link>
-          <input
-            id="koch-snow-flake"
-            v-model="kochSnowFlake.checked"
-            type="checkbox">
-          <label for="koch-snow-flake">Show Growth</label>
-        </footer>
-      </article>
-      <article class="l__card l__card--primary">
         <header class="l__card-header">Koch Snow Inverse</header>
         <figure>
-          <koch-snow-inverse 
+          <koch-snow-inverse
             :show-growth="kochSnowInverse.checked"/>
         </figure>
         <footer class="l__card-footer">
@@ -84,6 +81,7 @@ import KochCode from '../components/KochCode'
 import KochSnowFlake from '../components/KochSnowFlake'
 import KochSnowInverse from '../components/KochSnowInverse'
 import Sierpinski from '../components/Sierpinski'
+import FractalCard from '../components/FractalCard'
 
 if (process.client) {
   import('../plugins/color-picker')
@@ -93,17 +91,22 @@ export default {
     'koch-code': KochCode,
     'koch-snow-flake': KochSnowFlake,
     'koch-snow-inverse': KochSnowInverse,
-    sierpinski: Sierpinski
+    sierpinski: Sierpinski,
+    'fractal-card': FractalCard
   },
   data: () => ({
     kochCode: {
       checked: false,
-      levels: 4,
+      levels: 5,
       color: { rgba: { r: 255, g: 0, b: 0, a: 1 } },
       displayColorPicker: false
     },
     kochSnowFlake: {
-      checked: false
+      checked: true,
+      levels: 5,
+      color: { rgba: { r: 248, g: 231, b: 28, a: 1 } },
+      backgroundColor: { rgba: { r: 255, g: 0, b: 0, a: 1 } },
+      displayColorPicker: false
     },
     kochSnowInverse: {
       checked: false
@@ -125,10 +128,10 @@ export default {
   grid-gap: 5px;
   padding: 5px;
   grid-template-columns: repeat(12, minmax(30px, 1fr));
-  grid-auto-rows: 320px;
+  grid-auto-rows: 520px;
 }
 .l__card {
-  grid-column: span 3;
+  grid-column: span 6;
   display: grid;
   grid-template-rows: 30px 1fr 30px;
 }

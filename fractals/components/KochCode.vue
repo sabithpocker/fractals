@@ -22,12 +22,7 @@ export default {
   },
   methods: {
     paint: function(gl, simpleShader) {
-      this.changeColor(
-        this.paintColor.rgba.r / 255,
-        this.paintColor.rgba.b / 255,
-        this.paintColor.rgba.g / 255,
-        this.paintColor.rgba.a
-      )
+      this.changeColor(...this.getPaintColorRBGA())
       const width = gl.canvas.width
       const margin = 10
       const points = [0 + margin, 0 + margin, width - margin, 0 + margin]

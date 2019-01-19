@@ -95,10 +95,10 @@ export default {
         a
       )
     },
-    initialize(canvas) {
+    initialize(canvas, color = [0, 0, 0, 0]) {
       const gl = this.getWebGLContext(canvas)
       this.resize(gl)
-      this.clearCanvas(gl)
+      this.clearCanvas(gl, color)
       const program = this.createProgram(
         gl,
         this.getSimpleVertexShader(gl),
