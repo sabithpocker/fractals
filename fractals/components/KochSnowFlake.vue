@@ -1,6 +1,6 @@
 <template>
   <canvas
-    ref="kochSnowFlake" 
+    ref="kochSnowFlake"
     class="l__canvas"/>
 </template>
 
@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     paint: function(gl, simpleShader) {
-      console.log(this.levels)
       this.changeColor(...this.getPaintColorRBGA())
       this.clearCanvas(gl, this.getBackgroundColorRBGA())
       const width = gl.canvas.width

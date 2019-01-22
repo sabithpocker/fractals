@@ -11,6 +11,9 @@ import ShowGrowth from '../mixins/show-growth'
 import PaintColor from '../mixins/paint-color'
 import DynamicLevels from '../mixins/dynamic-levels.mixin'
 import ArrayUtils from '../mixins/array.utils.mixin'
+import FractalTree from '../datastructures/FractalTree/FractalTree'
+import generateChildren from '../datastructures/FractalTree/generateChildren'
+
 export default {
   mixins: [WebGLM, Line, ShowGrowth, DynamicLevels, PaintColor, ArrayUtils],
   mounted: function() {
@@ -26,13 +29,19 @@ export default {
       const width = gl.canvas.width
       const margin = 10
       const points = [0 + margin, 0 + margin, width - margin, 0 + margin]
-      const childPoints = this.showGrowth
-        ? this.getChildLinePointsForLevelsArray(
-            points,
-            this.getRangeArray(this.levels)
-          )
-        : this.getChildLinePoints(points, this.levels)
-      childPoints.forEach(points => this.drawLine(gl, simpleShader, ...points))
+      const fractalTree = new FractalTree(points, generateChildren, this.levels)
+      const rangeArray = this.getRangeArray(this.levels)
+      if (this.showGrowth) {
+        rangeArray.forEach(level => {
+          fractalTree
+            .getValuesAtDepth(level)
+            .forEach(points => this.drawLine(gl, simpleShader, ...points))
+        })
+      } else {
+        fractalTree
+          .getValuesAtDepth(this.levels)
+          .forEach(points => this.drawLine(gl, simpleShader, ...points))
+      }
     }
   }
 }

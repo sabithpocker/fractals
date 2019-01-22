@@ -26,7 +26,7 @@
         id="koch-code-levels"
         v-model.number="settings.levels"
         min="0"
-        max="5"
+        max="7"
         type="number">
     </footer>
   </article>

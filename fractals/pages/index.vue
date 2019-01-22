@@ -1,7 +1,7 @@
 <template>
   <section class="l__container">
     <header class="l__main-header l__main-header--red">
-      <h1>Fractals Using Javascript, VueJS and WebGL</h1>
+      <h1>Fractals Using Javascript, VueJS and WebGL TODO: Datastructure for fractal lines grouping each unit.</h1>
     </header>
     <section class="l__cards">
       <fractal-card>

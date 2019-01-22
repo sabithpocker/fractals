@@ -7,7 +7,6 @@ export default {
   },
   watch: {
     levels: function(newVal, oldVal) {
-      console.log(newVal)
       if (!isNaN(newVal)) {
         const { gl, simpleShader } = this.$data
         this.clearCanvas(gl)
