@@ -26,7 +26,7 @@
         id="koch-code-levels"
         v-model.number="settings.levels"
         min="0"
-        max="7"
+        max="5"
         type="number">
     </footer>
   </article>
@@ -37,14 +37,18 @@ if (process.client) {
   import('../plugins/color-picker')
 }
 export default {
-  data: () => ({
+  props: {
     settings: {
-      checked: false,
-      levels: 5,
-      color: { rgba: { r: 255, g: 0, b: 0, a: 1 } },
-      displayColorPicker: false
+      type: Object,
+      default: () => ({
+        checked: false,
+        levels: 5,
+        color: { rgba: { r: 255, g: 255, b: 255, a: 1 } },
+        backgroundColor: { rgba: { r: 255, g: 0, b: 0, a: 1 } },
+        displayColorPicker: false
+      })
     }
-  })
+  }
 }
 </script>
 

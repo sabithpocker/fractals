@@ -3,6 +3,7 @@ export default class FractalTreeNode {
     this.value = value
     this.parentNode = parentNode
     this.children = []
+    this.depth = depth
     if (depth) {
       generateChildren(value).forEach(childValue => {
         this.addChild(childValue, generateChildren, depth)
